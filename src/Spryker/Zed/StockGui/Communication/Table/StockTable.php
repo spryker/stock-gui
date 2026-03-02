@@ -56,21 +56,12 @@ class StockTable extends AbstractTable
      */
     protected $stockFacade;
 
-    /**
-     * @param \Orm\Zed\Stock\Persistence\SpyStockQuery $stockQuery
-     * @param \Spryker\Zed\StockGui\Dependency\Facade\StockGuiToStockFacadeInterface $stockFacade
-     */
     public function __construct(SpyStockQuery $stockQuery, StockGuiToStockFacadeInterface $stockFacade)
     {
         $this->stockQuery = $stockQuery;
         $this->stockFacade = $stockFacade;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $config->setHeader([
@@ -101,11 +92,6 @@ class StockTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         $stockToStoreMapping = $this->stockFacade->getWarehouseToStoreMapping();
@@ -119,12 +105,6 @@ class StockTable extends AbstractTable
         return $stockCollection;
     }
 
-    /**
-     * @param \Orm\Zed\Stock\Persistence\SpyStock $stockEntity
-     * @param array $stockToStoreMapping
-     *
-     * @return array
-     */
     protected function generateItem(SpyStock $stockEntity, array $stockToStoreMapping): array
     {
         return [
@@ -136,11 +116,6 @@ class StockTable extends AbstractTable
         ];
     }
 
-    /**
-     * @param bool $isActive
-     *
-     * @return string
-     */
     protected function getStatusLabel(bool $isActive): string
     {
         if (!$isActive) {
@@ -182,11 +157,6 @@ class StockTable extends AbstractTable
         ];
     }
 
-    /**
-     * @param int $idStock
-     *
-     * @return string
-     */
     protected function generateStockViewButton(int $idStock): string
     {
         return $this->generateViewButton(
@@ -197,11 +167,6 @@ class StockTable extends AbstractTable
         );
     }
 
-    /**
-     * @param int $idStock
-     *
-     * @return string
-     */
     protected function generateStockEditButton(int $idStock): string
     {
         return $this->generateEditButton(

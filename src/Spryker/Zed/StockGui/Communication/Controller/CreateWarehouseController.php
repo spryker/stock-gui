@@ -57,11 +57,6 @@ class CreateWarehouseController extends AbstractController
         ]);
     }
 
-    /**
-     * @param \Symfony\Component\Form\FormInterface $stockForm
-     *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     protected function handleStockForm(FormInterface $stockForm): RedirectResponse
     {
         $stockResponseTransfer = $this->getFactory()
@@ -79,11 +74,6 @@ class CreateWarehouseController extends AbstractController
         return $this->redirectResponse(static::REDIRECT_URL);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockResponseTransfer $stockResponseTransfer
-     *
-     * @return void
-     */
     protected function setErrors(StockResponseTransfer $stockResponseTransfer): void
     {
         foreach ($stockResponseTransfer->getMessages() as $messageTransfer) {

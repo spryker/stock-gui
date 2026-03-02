@@ -23,9 +23,6 @@ use Symfony\Component\Form\FormInterface;
 
 class StockGuiCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Spryker\Zed\StockGui\Communication\Table\StockTable
-     */
     public function createStockTable(): StockTable
     {
         return new StockTable(
@@ -42,9 +39,6 @@ class StockGuiCommunicationFactory extends AbstractCommunicationFactory
         return new StockTabs();
     }
 
-    /**
-     * @return \Spryker\Zed\StockGui\Communication\Form\Constraint\StockNameUniqueConstraint
-     */
     public function createStockNameUniqueConstraint(): StockNameUniqueConstraint
     {
         return new StockNameUniqueConstraint([
@@ -52,45 +46,26 @@ class StockGuiCommunicationFactory extends AbstractCommunicationFactory
         ]);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer|null $stockTransfer
-     *
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function getStockForm(?StockTransfer $stockTransfer = null): FormInterface
     {
         return $this->getFormFactory()->create(StockForm::class, $stockTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockTransfer|null $stockTransfer
-     *
-     * @return \Symfony\Component\Form\FormInterface
-     */
     public function getUpdateStockForm(?StockTransfer $stockTransfer = null): FormInterface
     {
         return $this->getFormFactory()->create(UpdateStockForm::class, $stockTransfer);
     }
 
-    /**
-     * @return \Orm\Zed\Stock\Persistence\SpyStockQuery
-     */
     public function getStockPropelQuery(): SpyStockQuery
     {
         return $this->getProvidedDependency(StockGuiDependencyProvider::PROPEL_QUERY_STOCK);
     }
 
-    /**
-     * @return \Spryker\Zed\StockGui\Dependency\Facade\StockGuiToStockFacadeInterface
-     */
     public function getStockFacade(): StockGuiToStockFacadeInterface
     {
         return $this->getProvidedDependency(StockGuiDependencyProvider::FACADE_STOCK);
     }
 
-    /**
-     * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
-     */
     public function getStoreRelationFormTypePlugin(): FormTypeInterface
     {
         return $this->getProvidedDependency(StockGuiDependencyProvider::PLUGIN_STORE_RELATION_FORM_TYPE);

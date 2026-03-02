@@ -27,9 +27,6 @@ class StockNameUniqueConstraint extends Constraint
      */
     protected $stockFacade;
 
-    /**
-     * @return \Spryker\Zed\StockGui\Dependency\Facade\StockGuiToStockFacadeInterface
-     */
     public function getStockFacade(): StockGuiToStockFacadeInterface
     {
         return $this->stockFacade;

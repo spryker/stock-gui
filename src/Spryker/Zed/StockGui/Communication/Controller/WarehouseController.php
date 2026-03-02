@@ -15,9 +15,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class WarehouseController extends AbstractController
 {
-    /**
-     * @return array
-     */
     public function listAction(): array
     {
         $stockTable = $this->getFactory()->createStockTable();
@@ -27,9 +24,6 @@ class WarehouseController extends AbstractController
         ]);
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function tableAction(): JsonResponse
     {
         $stockTable = $this->getFactory()->createStockTable();
